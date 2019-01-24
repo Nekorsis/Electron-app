@@ -11,9 +11,9 @@ const io = socketIO(server)
 io.on('connection', socket => {
   console.log('user connected')
 
-  socket.on('change color', (color) => {
-    console.log('Color Changed to: ', color)
-    io.sockets.emit('change color', color)
+  socket.on('send_msg', (msg) => {
+    console.log('message: ', msg);
+    io.sockets.emit('sendback_msg', {id: Math.random(), msg: msg, userId: 1, userName: 'me'});
   })
   
   socket.on('disconnect', () => {
