@@ -13,7 +13,7 @@ io.on('connection', socket => {
 
   socket.on('send_msg', (msg) => {
     console.log('message: ', msg);
-    io.sockets.emit('sendback_msg', {id: Math.random(), msg: msg, userId: 1, userName: 'me'});
+    io.sockets.emit('sendback_msg', {id: msg.id, msg: msg.msg, userId: 1, userName: 'me', timeSend: msg.timeSend});
   })
   
   socket.on('disconnect', () => {
